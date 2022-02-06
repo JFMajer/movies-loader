@@ -9,4 +9,7 @@ node ('workers') {
         sh "docker run --rm -v $PWD/reports:/app/reports ${imageName}-test"
         junit "$PWD/reports/*.xml"
     }
+    stage('Build') {
+        docker.buil(imageName)
+    }
 }
