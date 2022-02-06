@@ -11,9 +11,6 @@ node ('workers') {
     stage('Build') {
         docker.build(imageName)
     }
-    stage('grab credentials') {
-        sh 'aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 578997275585.dkr.ecr.eu-north-1.amazonaws.com'
-    }
     stage('Push') {
         docker.withRegistry(registry, 'registry') {
             docker.image(imageName).push(env.BUILD_ID)
