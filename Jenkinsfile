@@ -12,7 +12,7 @@ node ('workers') {
         docker.build(imageName)
     }
     stage('Push') {
-        docker.withRegistry(registry, 'ecr:eu-north-1:credential-id') {
+        docker.withRegistry(registry, 'ecr:eu-north-1:my.aws.credentials' {
             docker.image(imageName).push(env.BUILD_ID)
         }
     }
