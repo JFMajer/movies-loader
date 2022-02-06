@@ -1,5 +1,5 @@
 def imageName = 'jfmajer/movies-loader'
-def registry = 'https://public.ecr.aws/d0t2w1c9/jfmajer/movies-loader'
+def registry = 'https://578997275585.dkr.ecr.eu-north-1.amazonaws.com/jfmajer/movies-loader'
 
 node ('workers') {
     stage('Checkout') {
@@ -12,7 +12,7 @@ node ('workers') {
         docker.build(imageName)
     }
     stage('Push') {
-        docker.withRegistry(registry, 'registry') {
+        docker.withRegistry(registry, 'ecr:eu-north-1:credential-id') {
             docker.image(imageName).push(env.BUILD_ID)
         }
     }
