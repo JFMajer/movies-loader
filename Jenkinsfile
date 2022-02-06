@@ -13,7 +13,11 @@ node ('workers') {
     }
     stage('Push') {
         docker.withRegistry(registry, 'ecr:eu-north-1:my.aws.credentials') {
-            docker.image(imageName).push(commitID)
+            docker.image(imageName).push(commitID())
+
+                if (env.BRANCH_NAME == 'develop') {
+                    docker.image(imageName).push('develop')
+                }
         }
     }
 }
