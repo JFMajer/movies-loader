@@ -1,6 +1,5 @@
 def imageName = 'jfmajer/movies-loader'
 def registry = 'https://578997275585.dkr.ecr.eu-north-1.amazonaws.com/jfmajer/movies-loader'
-}
 
 node ('workers') {
     stage('Checkout') {
