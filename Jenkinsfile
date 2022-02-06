@@ -8,6 +8,6 @@ node ('workers') {
         def imageTest = docker.build("${imageName}-test","-f Dockerfile.test .")
     }
     stage('Build') {
-        docker.buil(imageName)
+        docker.build(imageName)
     }
 }
