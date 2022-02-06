@@ -12,7 +12,7 @@ node ('workers') {
         docker.build(imageName)
     }
     stage('grab credentials') {
-        sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/d0t2w1c9'
+        sh 'aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 578997275585.dkr.ecr.eu-north-1.amazonaws.com'
     }
     stage('Push') {
         docker.withRegistry(registry, 'registry') {
